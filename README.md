@@ -44,7 +44,7 @@ Test Automation using **Selenium**, **Cucumber**, **JUnit**, **Maven**, and **Ja
 ## How to Execute?
 
 #### 1. Run the Test
-* You are ready to automate the test in [Parabank.com](https://parabank.parasoft.com/parabank/index.htm) sign up
+* You are ready to automate the test
 * Run your test using `mvn install` or `mvn verify` from Terminal
 
 #### 2. Test Result
