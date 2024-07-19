@@ -1,0 +1,11 @@
+PageObjects\WebTablePage.class
+PageObjects\HomePage.class
+StepDefinitions\Hooks.class
+StepDefinitions\WebTableSteps$UserData.class
+Misc\Constants.class
+PageObjects\LoginPage.class
+PageObjects\RegisterPage.class
+Utilities\BaseClass.class
+StepDefinitions\WebTableSteps.class
+TestRunner.class
+Utilities\PropertiesReader.class

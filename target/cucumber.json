@@ -1,0 +1,442 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2024-07-18T20:18:13.552Z",
+        "before": [
+          {
+            "result": {
+              "duration": 4731733100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.Hooks.openBrowser()"
+            }
+          }
+        ],
+        "line": 16,
+        "name": "User wants to Add entries into web table",
+        "description": "",
+        "id": "web-tables;user-wants-to-add-entries-into-web-table;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 1751028300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.Hooks.embedScreenshot(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 9269733700,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The user is on the webtables page",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userIsOnWebTablesPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 409192600,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The user clicks the \"Add\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Add\"",
+                  "offset": 20
+                }
+              ],
+              "location": "StepDefinitions.WebTableSteps.userClicksAddButton(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 423464700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The user fills in the account details",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userFillsAccountDetails(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "firstname",
+                  "lastname",
+                  "email",
+                  "age",
+                  "salary",
+                  "department"
+                ]
+              },
+              {
+                "cells": [
+                  "John",
+                  "Doe",
+                  "john.doe@example.com",
+                  "21",
+                  "200000",
+                  "Software"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 266436600,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "The user clicks submit",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userClicksSubmit()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 292685200,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The user should see the information in the table",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userShouldSeeInformationInTable(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "firstname",
+                  "lastname",
+                  "email",
+                  "age",
+                  "salary",
+                  "department"
+                ]
+              },
+              {
+                "cells": [
+                  "John",
+                  "Doe",
+                  "john.doe@example.com",
+                  "21",
+                  "200000",
+                  "Software"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2024-07-18T20:18:30.756Z",
+        "before": [
+          {
+            "result": {
+              "duration": 3711152200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.Hooks.openBrowser()"
+            }
+          }
+        ],
+        "line": 17,
+        "name": "User wants to Add entries into web table",
+        "description": "",
+        "id": "web-tables;user-wants-to-add-entries-into-web-table;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 2225382300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.Hooks.embedScreenshot(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 28519881300,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The user is on the webtables page",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userIsOnWebTablesPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 356027700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The user clicks the \"Add\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Add\"",
+                  "offset": 20
+                }
+              ],
+              "location": "StepDefinitions.WebTableSteps.userClicksAddButton(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 416676700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The user fills in the account details",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userFillsAccountDetails(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "firstname",
+                  "lastname",
+                  "email",
+                  "age",
+                  "salary",
+                  "department"
+                ]
+              },
+              {
+                "cells": [
+                  "Jane",
+                  "Smith",
+                  "jane.smith@example.com",
+                  "22",
+                  "300000",
+                  "Admin"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 270630100,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "The user clicks submit",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userClicksSubmit()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 222983500,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The user should see the information in the table",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userShouldSeeInformationInTable(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "firstname",
+                  "lastname",
+                  "email",
+                  "age",
+                  "salary",
+                  "department"
+                ]
+              },
+              {
+                "cells": [
+                  "Jane",
+                  "Smith",
+                  "jane.smith@example.com",
+                  "22",
+                  "300000",
+                  "Admin"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2024-07-18T20:19:06.485Z",
+        "before": [
+          {
+            "result": {
+              "duration": 3886518800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.Hooks.openBrowser()"
+            }
+          }
+        ],
+        "line": 18,
+        "name": "User wants to Add entries into web table",
+        "description": "",
+        "id": "web-tables;user-wants-to-add-entries-into-web-table;;4",
+        "after": [
+          {
+            "result": {
+              "duration": 1371641100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.Hooks.embedScreenshot(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 13815236200,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The user is on the webtables page",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userIsOnWebTablesPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 349897400,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The user clicks the \"Add\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Add\"",
+                  "offset": 20
+                }
+              ],
+              "location": "StepDefinitions.WebTableSteps.userClicksAddButton(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 447273100,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The user fills in the account details",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userFillsAccountDetails(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "firstname",
+                  "lastname",
+                  "email",
+                  "age",
+                  "salary",
+                  "department"
+                ]
+              },
+              {
+                "cells": [
+                  "Alice",
+                  "Johnson",
+                  "alice.johnson@example.com",
+                  "23",
+                  "400000",
+                  "HR"
+                ]
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 236771400,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "The user clicks submit",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userClicksSubmit()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 182797900,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The user should see the information in the table",
+            "match": {
+              "location": "StepDefinitions.WebTableSteps.userShouldSeeInformationInTable(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "firstname",
+                  "lastname",
+                  "email",
+                  "age",
+                  "salary",
+                  "department"
+                ]
+              },
+              {
+                "cells": [
+                  "Alice",
+                  "Johnson",
+                  "alice.johnson@example.com",
+                  "23",
+                  "400000",
+                  "HR"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Web Tables",
+    "description": "",
+    "id": "web-tables",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/WebTables.feature",
+    "tags": []
+  }
+]
