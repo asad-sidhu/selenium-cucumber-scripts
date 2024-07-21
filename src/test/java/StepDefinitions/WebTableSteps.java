@@ -21,9 +21,9 @@ public class WebTableSteps {
 
     @Given("The user is on the webtables page")
     public void userIsOnWebTablesPage() {
-        if (!getDriver().getCurrentUrl().equals(Constants.WEBTABLESURL)) {
+//        if (!getDriver().getCurrentUrl().equals(Constants.WEBTABLESURL)) {
             getDriver().get(Constants.WEBTABLESURL);
-        }
+//        }
     }
 
     @When("The user clicks the Add button")
@@ -57,6 +57,25 @@ public class WebTableSteps {
             webTablePage.enterDepartment(department);
         }
 
+    }
+
+    @And("The user types in the searchbox")
+    public void userTypesSearchQuery(DataTable table) throws InterruptedException {
+        List<Map<String,String>>  data = table.asMaps(String.class, String.class);
+        for (Map<String,String> row : data) {
+            String searchQuery = row.get("searchQuery");
+            webTablePage.enterSearchQuery(searchQuery);
+            Thread.sleep(1000);
+        }
+    }
+
+    @And("The user should see the search results in the table")
+    public void verifySearchResults(DataTable table) throws InterruptedException {
+        List<Map<String,String>>  data = table.asMaps(String.class, String.class);
+        for (Map<String,String> row : data){
+            String searchQuery = row.get("searchQuery");
+            Assert.assertTrue(webTablePage.isDisplayed(By.xpath("//div[@class='rt-tbody']//*[contains(@class, 'rt-td') and contains (text(), '"+searchQuery+"')]")));
+        }
     }
 
     @And("The user clicks submit")

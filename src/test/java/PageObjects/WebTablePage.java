@@ -29,6 +29,7 @@ public class WebTablePage extends BaseClass {
     private final By userRecordForm = By.id("userForm");
     private final By editRecordBtn = By.id("edit-record-1");
     private final By deleteRecordBtn = By.id("delete-record-1");
+    private final By searchField = By.id("searchBox");
 
 
     public  void clickAddRecordButton() {
@@ -69,6 +70,10 @@ public class WebTablePage extends BaseClass {
 
    public  void enterDepartment(String department) {
        type(departmentField,department);
+    }
+
+    public  void enterSearchQuery(String searchQuery) {
+        type(searchField,searchQuery);
     }
 
     public boolean isDisplayed(By locator) {

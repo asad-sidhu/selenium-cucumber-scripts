@@ -43,3 +43,21 @@ Feature: Web Tables
     When User takes count of the records
     And The user clicks the Delete button
     Then The Record should be Deleted
+
+  Scenario Outline: Verify user is able to search records in the user table.
+    Given The user is on the webtables page
+    When The user types in the searchbox
+      | searchQuery   |
+      | <searchQuery>   |
+    Then The user should see the search results in the table
+      | searchQuery   |
+      | <searchQuery>   |
+
+    Examples:
+      | searchQuery   |
+      | Cierra   |
+      | Vega |
+      | 39   |
+      | cierra@example.com |
+      | 10000   |
+      | Insurance |
