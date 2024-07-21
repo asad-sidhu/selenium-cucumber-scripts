@@ -22,6 +22,7 @@ public class Methods {
 
     public static void type(By locator, String text) {
         waitElementClickable(locator);
+        driver.getDriver().findElement(locator).clear();
         driver.getDriver().findElement(locator).sendKeys(text);
     }
 

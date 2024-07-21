@@ -6,6 +6,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import static StepDefinitions.Hooks.getDriver;
 public class WebTableSteps {
 
     private WebTablePage webTablePage = new WebTablePage(getDriver());
+    private int initialCount;
+
 
     @Given("The user is on the webtables page")
     public void userIsOnWebTablesPage() {
@@ -23,9 +26,14 @@ public class WebTableSteps {
         }
     }
 
-    @When("The user clicks the {string} button")
-    public void userClicksAddButton(String buttonName) {
+    @When("The user clicks the Add button")
+    public void userClicksAddButton() {
         webTablePage.clickAddRecordButton();
+    }
+
+    @When("The user clicks the Edit button")
+    public void userClicksEditButton() {
+        webTablePage.clickEditRecordButton();
     }
 
     @And("The user fills in the account details")
@@ -70,9 +78,38 @@ public class WebTableSteps {
         }
     }
 
+    @Then("The user should see the updated information in the table")
+    public void userShouldSeeUpdatedInformationInTable(DataTable table) {
+        List<WebElement> actualDataElements = getDriver().findElements(By.xpath("(//*[contains(@class, 'rt-tr') and contains(@class, '-odd')])[1]/div[not(*)]"));
+        Map<String,String>  expectedData = table.asMaps(String.class, String.class).get(0);
+            Assert.assertEquals(expectedData.get("firstname"),actualDataElements.get(0).getText());
+            Assert.assertEquals(expectedData.get("lastname"),actualDataElements.get(1).getText());
+        Assert.assertEquals(expectedData.get("age"),actualDataElements.get(2).getText());
+        Assert.assertEquals(expectedData.get("email"),actualDataElements.get(3).getText());
+            Assert.assertEquals(expectedData.get("salary"),actualDataElements.get(4).getText());
+            Assert.assertEquals(expectedData.get("department"),actualDataElements.get(5).getText());
+    }
+
     @Then("The user should see the Mandatory Field alerts in all the fields")
     public void userShouldSeeMandatoryAlerts() {
         Assert.assertTrue(webTablePage.areMandatoryAlertsPresent());
+    }
+
+    @When("User takes count of the records")
+    public void user_takes_count_of_the_records() {
+        initialCount = webTablePage.totalRecordCount();
+        System.out.println(initialCount);
+    }
+
+    @When("The user clicks the Delete button")
+    public void the_user_clicks_the_delete_button() {
+        webTablePage.clickDeleteRecordButton();
+    }
+
+    @Then("The Record should be Deleted")
+    public void  the_record_should_be_deleted() {
+        int countAfterDeletion = webTablePage.totalRecordCount();
+        Assert.assertEquals(initialCount-1,countAfterDeletion);
     }
 
     // Helper class to represent user data

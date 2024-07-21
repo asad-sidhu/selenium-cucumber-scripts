@@ -18,19 +18,29 @@ public class WebTablePage extends BaseClass {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-    private By addNewRecordBtn = By.id("addNewRecordButton");
-    private By firstNameField = By.id("firstName");
-    private By lastNameField = By.id("lastName");
-    private By emailField = By.id("userEmail");
-    private By ageField = By.id("age");
-    private By salaryField = By.id("salary");
-    private By departmentField = By.id("department");
-    private By submitRecordBtn = By.id("submit");
-    private By userRecordForm = By.id("userForm");
+    private final By addNewRecordBtn = By.id("addNewRecordButton");
+    private final By firstNameField = By.id("firstName");
+    private final By lastNameField = By.id("lastName");
+    private final By emailField = By.id("userEmail");
+    private final By ageField = By.id("age");
+    private final By salaryField = By.id("salary");
+    private final By departmentField = By.id("department");
+    private final By submitRecordBtn = By.id("submit");
+    private final By userRecordForm = By.id("userForm");
+    private final By editRecordBtn = By.id("edit-record-1");
+    private final By deleteRecordBtn = By.id("delete-record-1");
 
 
     public  void clickAddRecordButton() {
         click(addNewRecordBtn);
+    }
+
+    public  void clickEditRecordButton() {
+        click(editRecordBtn);
+    }
+
+    public  void clickDeleteRecordButton() {
+        click(deleteRecordBtn);
     }
 
     public  void clickSubmitRecordButton() {
@@ -73,4 +83,26 @@ public class WebTablePage extends BaseClass {
         }
         return present;
     }
+
+    public int totalRecordCount() {
+        int count = 0;
+        for (int i = 1; i <= 3; i++) {
+            List<WebElement> cells = getDriver().findElements(By.xpath("(//div[@class='rt-tbody']//*[contains(@class, 'rt-tr-group')])["+i+"]//div[@class='rt-td' and not(*)]")); // Relative XPath
+            int count2 = 0;
+            for (WebElement cell: cells) {
+                if (!cell.getText().trim().equals("")) {
+                    System.out.println("Non-empty cell text: " + cell.getText());
+                    count2++;
+                }
+            }
+            System.out.println("Non-empty cell count for this row: " + count2);
+            if (count2 == 6) { // Check after inner loop
+                count++;
+                System.out.println("Total count incremented: " + count);
+            }
+        }
+        System.out.println("Final total count of non-empty rows: " + count);
+        return count;
+    }
+
 }
