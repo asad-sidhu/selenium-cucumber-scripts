@@ -1,5 +1,6 @@
 package PageObjects;
 
+import Misc.Constants;
 import Utilities.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +32,10 @@ public class WebTablePage extends BaseClass {
     private final By deleteRecordBtn = By.id("delete-record-1");
     private final By searchField = By.id("searchBox");
 
+
+    public void navigateToWebTablePage() {
+        getDriver().get(Constants.WEBTABLESURL);
+    }
 
     public  void clickAddRecordButton() {
         click(addNewRecordBtn);

@@ -21,9 +21,7 @@ public class WebTableSteps {
 
     @Given("The user is on the webtables page")
     public void userIsOnWebTablesPage() {
-//        if (!getDriver().getCurrentUrl().equals(Constants.WEBTABLESURL)) {
-            getDriver().get(Constants.WEBTABLESURL);
-//        }
+        webTablePage.navigateToWebTablePage();
     }
 
     @When("The user clicks the Add button")

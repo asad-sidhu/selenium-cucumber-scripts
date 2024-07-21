@@ -7,6 +7,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Base64;
@@ -19,8 +20,8 @@ public class Hooks {
     @BeforeAll
     public static void setup() throws Exception {
         if (driver == null) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
             PropertiesReader propertiesReader = new PropertiesReader();
             driver.manage().timeouts().implicitlyWait(propertiesReader.getTimeout(), TimeUnit.SECONDS);
             driver.manage().timeouts().setScriptTimeout(propertiesReader.getTimeout(), TimeUnit.SECONDS);

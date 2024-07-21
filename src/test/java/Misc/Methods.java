@@ -12,15 +12,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Methods {
 
     static Hooks driver = new Hooks();
-    public static WebDriverWait wait = new WebDriverWait(driver.getDriver(), 10000, 1);
+    public static WebDriverWait wait = new WebDriverWait(driver.getDriver(), 10, 1);
 
     public static void click(By locator) {
-        waitElementVisible(locator);
-        waitElementClickable(locator);
+        scroll(locator);
+//        waitElementClickable(locator);
         driver.getDriver().findElement(locator).click();
     }
 
     public static void type(By locator, String text) {
+        scroll(locator);
         waitElementClickable(locator);
         driver.getDriver().findElement(locator).clear();
         driver.getDriver().findElement(locator).sendKeys(text);
@@ -31,12 +32,18 @@ public class Methods {
         return isDisplayed;
     }
 
+    public static boolean isEnabled(By locator) throws InterruptedException {
+        boolean isEnabled = driver.getDriver().findElement(locator).isEnabled();
+        return isEnabled;
+    }
+
     public static void enterKey(By locator) {
         waitElementVisible(locator);
         driver.getDriver().findElement(locator).sendKeys(Keys.ENTER);
     }
 
     public static String getText(By locator) {
+        scroll(locator);
         waitElementVisible(locator);
         return driver.getDriver().findElement(locator).getText();
     }
