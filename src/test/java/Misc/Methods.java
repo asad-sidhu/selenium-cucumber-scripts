@@ -7,69 +7,101 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import static StepDefinitions.Hooks.getDriver;
 
 
 public class Methods {
 
     static Hooks driver = new Hooks();
-    public static WebDriverWait wait = new WebDriverWait(driver.getDriver(), 10, 1);
+    static Actions actions = new Actions(getDriver());
+    public static WebDriverWait wait = new WebDriverWait(getDriver(), 10, 1);
+    static Robot robot;
 
+    public static void pressEnter(){
+        try {
+            robot = new Robot();
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void click(By locator) {
         scroll(locator);
-//        waitElementClickable(locator);
-        driver.getDriver().findElement(locator).click();
+        waitElementClickable(locator);
+        getDriver().findElement(locator).click();
+    }
+
+    public static void doubleClick(By locator) {
+        scroll(locator);
+        waitElementClickable(locator);
+        actions.doubleClick(getDriver().findElement(locator)).perform();
+    }
+
+    public static void rightClick(By locator) {
+        scroll(locator);
+        waitElementClickable(locator);
+        actions.contextClick(getDriver().findElement(locator)).perform();
     }
 
     public static void type(By locator, String text) {
         scroll(locator);
         waitElementClickable(locator);
-        driver.getDriver().findElement(locator).clear();
-        driver.getDriver().findElement(locator).sendKeys(text);
+        getDriver().findElement(locator).clear();
+        getDriver().findElement(locator).sendKeys(text);
+        getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);    }
+
+    public static void doubleKeyAction(Keys key1, String key2) {
+        actions.keyDown(key1)
+                .sendKeys(key2)
+                .keyUp(key1)
+                .perform();
     }
 
     public static boolean isDisplayed(By locator) throws InterruptedException {
-        boolean isDisplayed = driver.getDriver().findElement(locator).isDisplayed();
-        return isDisplayed;
+        return getDriver().findElement(locator).isDisplayed();
     }
 
     public static boolean isEnabled(By locator) throws InterruptedException {
-        boolean isEnabled = driver.getDriver().findElement(locator).isEnabled();
-        return isEnabled;
+        return getDriver().findElement(locator).isEnabled();
     }
 
     public static void enterKey(By locator) {
         waitElementVisible(locator);
-        driver.getDriver().findElement(locator).sendKeys(Keys.ENTER);
+        getDriver().findElement(locator).sendKeys(Keys.ENTER);
     }
 
     public static String getText(By locator) {
         scroll(locator);
         waitElementVisible(locator);
-        return driver.getDriver().findElement(locator).getText();
+        return getDriver().findElement(locator).getText();
     }
 
     public static String getAttribute(By locator) {
-        return driver.getDriver().findElement(locator).getAttribute("value");
+        return getDriver().findElement(locator).getAttribute("value");
     }
 
     public static void clear(By locator) {
         waitElementVisible(locator);
-        driver.getDriver().findElement(locator).clear();
+        getDriver().findElement(locator).clear();
     }
 
     public static int size(By locator) {
-        int elementSize = driver.getDriver().findElements(locator).size();
-        return elementSize;
+        return getDriver().findElements(locator).size();
     }
 
     public static void waitElementVisible(By locator) {
-        Methods methods = new Methods();
-        methods.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public static void waitElementInvisible(String locator) {
-        Methods methods = new Methods();
-        methods.wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(locator)));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(locator)));
     }
 
     public static void waitElementClickable(By locator) {
@@ -78,18 +110,18 @@ public class Methods {
 
 
     public static void scroll(By locator) {
-        WebElement scroll = driver.getDriver().findElement(locator);
-        ((JavascriptExecutor) driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", scroll);
+        WebElement scroll = getDriver().findElement(locator);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", scroll);
     }
 
     public static void scrollToTopOfPage() {
-        JavascriptExecutor js = (JavascriptExecutor) driver.getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollTo(0, 0)");
     }
 
     public static void hover(By locator) {
-        WebElement hover = driver.getDriver().findElement(locator);
-        Actions action = new Actions(driver.getDriver());
+        WebElement hover = getDriver().findElement(locator);
+        Actions action = new Actions(getDriver());
         action.moveToElement(hover).perform();
     }
 
@@ -97,6 +129,11 @@ public class Methods {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         String script = String.format("return JSON.parse(arguments[0]).%s;", key);
         return (String) jsExecutor.executeScript(script, jsonString);
+    }
+
+    public static String getAbsolutePath(String relativePath) {
+        File file = new File(relativePath);
+        return file.getAbsolutePath();
     }
 
 }

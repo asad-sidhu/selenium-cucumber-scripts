@@ -32,6 +32,7 @@ public class TextBoxSteps {
     public void userClicksSubmitButton() {
         try {
             textBoxPage.clickSubmitButton();
+            Thread.sleep(500);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail("Failed to click the submit button: " + e.getMessage());
